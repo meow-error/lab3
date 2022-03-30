@@ -2,6 +2,8 @@ package com.example.lab3.cast;
 
 
 import com.example.lab3.cast.pars.JsonPars;
+import com.example.lab3.cast.pars.XmlPars;
+import com.example.lab3.cast.pars.YamlPars;
 
 import java.io.File;
 
@@ -14,9 +16,13 @@ public class Parser {
             jsonPars.parse(file);
             System.out.println(jsonPars.getReactorArrayList());
         } else if (file.getAbsolutePath().contains(".xml")) {
-            System.out.println(2);
+            XmlPars xmlPars = new XmlPars();
+            xmlPars.parse(file);
+            System.out.println(xmlPars.getReactorArrayList());
         } else if (file.getAbsolutePath().contains(".yaml")) {
-            System.out.println(3);
+            YamlPars yamlPars = new YamlPars();
+            yamlPars.parse(file);
+            System.out.println(yamlPars.getReactorArrayList());
         } else {
             System.out.println("Ашибка");
         }
