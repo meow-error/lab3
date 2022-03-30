@@ -6,4 +6,6 @@ module com.example.lab3 {
 
     opens com.example.lab3 to javafx.fxml;
     exports com.example.lab3;
+    exports com.example.lab3.app;
+    opens com.example.lab3.app to javafx.fxml;
 }

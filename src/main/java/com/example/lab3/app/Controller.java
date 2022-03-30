@@ -1,6 +1,6 @@
-package com.example.lab3;
+package com.example.lab3.app;
 
-import com.example.lab3.cast.pars.Parser;
+import com.example.lab3.cast.Parser;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
