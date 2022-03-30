@@ -24,20 +24,15 @@ public class Controller {
     private TreeView<String> treeReactors;
 
     @FXML
-    void importFile(ActionEvent event) throws IOException, ParseException {
+    void importFile(ActionEvent event) {
 
         FileChooser fc = new FileChooser();
         File file = fc.showOpenDialog(null);
 
         Parser parser = new Parser(file);
 
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Import");
-        alert.setHeaderText(null);
-        alert.setContentText("Файл загружен");
-        alert.showAndWait();
-
         initialize(parser.getReactorArrayList());
+
     }
 
 
@@ -60,7 +55,6 @@ public class Controller {
             TreeItem<String> leafItem9 = new TreeItem<>("source : " + reactor.getSource());
 
             branchItem.getChildren().addAll(leafItem1, leafItem2, leafItem3, leafItem4, leafItem5, leafItem6, leafItem7, leafItem8, leafItem9);
-
 
             rootItem.getChildren().add(branchItem);
         }
