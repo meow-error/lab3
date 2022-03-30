@@ -48,7 +48,7 @@ public class XmlPars {
                 double termal_capacity = 0;
                 double electrical_capacity = 0;
                 double life_time = 0;
-                double first_load;
+                double first_load = 0;
 
                 switch (reactorChilds.item(j).getNodeName()) {
                     case "name": {
@@ -82,13 +82,13 @@ public class XmlPars {
                     case "first_load": {
                         first_load = Double.parseDouble(reactorChilds.item(j).getTextContent());
                     }
-                    String source = "XML";
-
-                    Reactor reactor = new Reactor(name, burnup, kpd, enrichment, termal_capacity, electrical_capacity, life_time, first_load, source);
-
-                    reactorArrayList.add(reactor);
-
                 }
+                String source = "XML";
+
+                Reactor reactor = new Reactor(name, burnup, kpd, enrichment, termal_capacity, electrical_capacity, life_time, first_load, source);
+
+                reactorArrayList.add(reactor);
+
 
             }
 

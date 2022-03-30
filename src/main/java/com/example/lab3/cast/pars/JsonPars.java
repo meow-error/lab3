@@ -17,7 +17,7 @@ public class JsonPars {
 
         JSONParser parser = new JSONParser();
 
-        try (FileReader reader = new FileReader(file);) {
+        try (FileReader reader = new FileReader(file)) {
 
             JSONObject rootJsonObject = (JSONObject) parser.parse(reader);
 

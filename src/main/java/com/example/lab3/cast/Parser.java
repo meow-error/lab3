@@ -8,7 +8,6 @@ import com.example.lab3.cast.pars.YamlPars;
 import java.io.File;
 
 public class Parser {
-// Сделать в конструкторе обработку 3 методов, а сами методы создать классы для 3ех обработок
 
     public Parser(File file) {
         if (file.getAbsolutePath().contains(".json")) {
