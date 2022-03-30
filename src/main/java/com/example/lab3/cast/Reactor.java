@@ -80,6 +80,10 @@ public class Reactor {
         this.life_time = life_time;
     }
 
+    public String getSource() {
+        return source;
+    }
+
     public double getFirst_load() {
         return first_load;
     }

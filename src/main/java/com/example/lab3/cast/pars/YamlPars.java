@@ -7,13 +7,8 @@ import java.util.ArrayList;
 
 public class YamlPars {
 
-    private ArrayList<Reactor> reactorArrayList = new ArrayList<>();
 
-    public ArrayList<Reactor> getReactorArrayList() {
-        return reactorArrayList;
-    }
-
-    public void parse(File file) {
+    public void parse(File file, ArrayList<Reactor> reactorArrayList) {
 
 
 

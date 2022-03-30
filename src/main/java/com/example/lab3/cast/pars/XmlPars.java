@@ -11,13 +11,8 @@ import java.util.ArrayList;
 
 public class XmlPars {
 
-    private ArrayList<Reactor> reactorArrayList = new ArrayList<>();
 
-    public ArrayList<Reactor> getReactorArrayList() {
-        return reactorArrayList;
-    }
-
-    public void parse(File file) {
+    public void parse(File file, ArrayList<Reactor> reactorArrayList) {
 
         DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
         Document doc = null;
@@ -37,18 +32,20 @@ public class XmlPars {
 
             NodeList reactorChilds = reactorNode.getChildNodes();
 
+            String name = null;
+            double burnup = 0;
+            double kpd = 0;
+            double enrichment = 0;
+            double termal_capacity = 0;
+            double electrical_capacity = 0;
+            double life_time = 0;
+            double first_load = 0;
+
             for (int j = 0; j < reactorChilds.getLength(); j++) {
 
-                if (reactorChilds.item(j).getNodeType() != Node.ELEMENT_NODE) continue;
-
-                String name = null;
-                double burnup = 0;
-                double kpd = 0;
-                double enrichment = 0;
-                double termal_capacity = 0;
-                double electrical_capacity = 0;
-                double life_time = 0;
-                double first_load = 0;
+                if (reactorChilds.item(j).getNodeType() != Node.ELEMENT_NODE) {
+                    continue;
+                }
 
                 switch (reactorChilds.item(j).getNodeName()) {
                     case "name": {
@@ -83,13 +80,13 @@ public class XmlPars {
                         first_load = Double.parseDouble(reactorChilds.item(j).getTextContent());
                     }
                 }
-                String source = "XML";
 
+            }
+
+            String source = "XML";
+            if (name != null) {
                 Reactor reactor = new Reactor(name, burnup, kpd, enrichment, termal_capacity, electrical_capacity, life_time, first_load, source);
-
                 reactorArrayList.add(reactor);
-
-
             }
 
         }
