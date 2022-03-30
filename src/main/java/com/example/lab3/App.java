@@ -1,10 +1,8 @@
 package com.example.lab3;
 
-import com.example.lab3.cast.Reactor;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.TreeItem;
 import javafx.stage.Stage;
 
 import java.io.IOException;

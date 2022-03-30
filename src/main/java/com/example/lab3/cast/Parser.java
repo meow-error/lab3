@@ -10,7 +10,7 @@ import java.util.ArrayList;
 
 public class Parser {
 
-    private ArrayList<Reactor> reactorArrayList = new ArrayList<>();
+    private final ArrayList<Reactor> reactorArrayList = new ArrayList<>();
 
     public Parser(File file) {
         if (file.getAbsolutePath().endsWith(".json")) {
@@ -23,7 +23,7 @@ public class Parser {
             YamlPars yamlPars = new YamlPars();
             yamlPars.parse(file, reactorArrayList);
         } else {
-            System.out.println("Ашибка");
+            System.out.println("Ашипка");
         }
     }
 

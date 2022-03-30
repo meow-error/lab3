@@ -11,7 +11,6 @@ public class YamlPars {
     public void parse(File file, ArrayList<Reactor> reactorArrayList) {
 
 
-
     }
 
 }

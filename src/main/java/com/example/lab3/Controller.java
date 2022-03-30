@@ -4,15 +4,12 @@ import com.example.lab3.cast.Parser;
 import com.example.lab3.cast.Reactor;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
 import javafx.stage.FileChooser;
-import org.json.simple.parser.ParseException;
 
 import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
 
 public class Controller {
