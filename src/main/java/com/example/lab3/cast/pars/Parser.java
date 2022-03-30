@@ -12,7 +12,7 @@ import java.util.Iterator;
 import java.util.List;
 
 public class Parser {
-
+// Сделать в конструкторе обработку 3 методов, а сами методы создать классы для 3ех обработок
 
     public Parser(File file) throws IOException, ParseException {
 
