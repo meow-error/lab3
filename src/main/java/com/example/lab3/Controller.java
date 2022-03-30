@@ -1,6 +1,6 @@
 package com.example.lab3;
 
-import com.example.lab3.cast.pars.JsonMy;
+import com.example.lab3.cast.pars.Parser;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -22,12 +22,7 @@ public class Controller {
         FileChooser fc = new FileChooser();
         File file = fc.showOpenDialog(null);
 
-        JsonMy jsonMy = new JsonMy(file);
-
-
-
-
-
+        Parser parser = new Parser(file);
 
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Import");
