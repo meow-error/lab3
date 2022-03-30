@@ -1,4 +1,4 @@
-package com.example.lab3.app;
+package com.example.lab3;
 
 import com.example.lab3.cast.Parser;
 import javafx.event.ActionEvent;

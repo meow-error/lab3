@@ -10,8 +10,9 @@ public class Reactor {
     double electrical_capacity;
     double life_time;
     double first_load;
+    String source;
 
-    public Reactor(String name, double burnup, double kpd, double enrichment, double termal_capacity, double electrical_capacity, double life_time, double first_load) {
+    public Reactor(String name, double burnup, double kpd, double enrichment, double termal_capacity, double electrical_capacity, double life_time, double first_load, String source) {
         this.name = name;
         this.burnup = burnup;
         this.kpd = kpd;
@@ -20,6 +21,7 @@ public class Reactor {
         this.electrical_capacity = electrical_capacity;
         this.life_time = life_time;
         this.first_load = first_load;
+        this.source = source;
     }
 
     public String getName() {
