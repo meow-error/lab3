@@ -1,6 +1,7 @@
 package com.example.lab3.cast;
 
 
+import com.example.lab3.Controller;
 import com.example.lab3.cast.pars.JsonPars;
 import com.example.lab3.cast.pars.XmlPars;
 import com.example.lab3.cast.pars.YamlPars;
@@ -8,6 +9,7 @@ import com.example.lab3.cast.pars.YamlPars;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+
 
 public class Parser {
 
@@ -24,7 +26,7 @@ public class Parser {
             YamlPars yamlPars = new YamlPars();
             yamlPars.parse(file, reactorArrayList);
         } else {
-            System.out.println("Ашипка");
+            Controller.error();
         }
     }
 

@@ -11,7 +11,6 @@ import java.util.ArrayList;
 
 public class XmlPars {
 
-
     public void parse(File file, ArrayList<Reactor> reactorArrayList) {
 
         DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
@@ -43,9 +42,7 @@ public class XmlPars {
 
             for (int j = 0; j < reactorChilds.getLength(); j++) {
 
-                if (reactorChilds.item(j).getNodeType() != Node.ELEMENT_NODE) {
-                    continue;
-                }
+                if (reactorChilds.item(j).getNodeType() != Node.ELEMENT_NODE) continue;
 
                 switch (reactorChilds.item(j).getNodeName()) {
                     case "name": {
@@ -80,18 +77,14 @@ public class XmlPars {
                         first_load = Double.parseDouble(reactorChilds.item(j).getTextContent());
                     }
                 }
-
             }
 
             String source = "XML";
             if (name != null) {
                 Reactor reactor = new Reactor(name, burnup, kpd, enrichment, termal_capacity, electrical_capacity, life_time, first_load, source);
                 reactorArrayList.add(reactor);
+
             }
-
         }
-
-
     }
-
 }

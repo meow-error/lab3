@@ -11,7 +11,6 @@ import java.util.ArrayList;
 
 public class JsonPars {
 
-
     public void parse(File file, ArrayList<Reactor> reactorArrayList) {
 
         JSONParser parser = new JSONParser();
@@ -43,7 +42,5 @@ public class JsonPars {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
     }
-
 }

@@ -4,13 +4,13 @@ import com.example.lab3.cast.Parser;
 import com.example.lab3.cast.Reactor;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
 import javafx.stage.FileChooser;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
 public class Controller {
@@ -22,17 +22,17 @@ public class Controller {
     private TreeView<String> treeReactors;
 
     @FXML
-    void importFile(ActionEvent event) throws FileNotFoundException {
+    void importFile(ActionEvent event) {
 
-        FileChooser fc = new FileChooser();
-        File file = fc.showOpenDialog(null);
-
-        Parser parser = new Parser(file);
-
-        initialize(parser.getReactorArrayList());
-
+        try {
+            FileChooser fc = new FileChooser();
+            File file = fc.showOpenDialog(null);
+            Parser parser = new Parser(file);
+            initialize(parser.getReactorArrayList());
+        } catch (Exception e) {
+            error();
+        }
     }
-
 
     public void initialize(ArrayList<Reactor> reactorArrayList) {
 
@@ -52,14 +52,18 @@ public class Controller {
             TreeItem<String> leafItem8 = new TreeItem<>("first_load : " + reactor.getFirst_load());
             TreeItem<String> leafItem9 = new TreeItem<>("source : " + reactor.getSource());
 
-            branchItem.getChildren().addAll(leafItem1, leafItem2, leafItem3, leafItem4, leafItem5, leafItem6, leafItem7, leafItem8, leafItem9);
-
+            branchItem.getChildren().addAll(leafItem1, leafItem2, leafItem3, leafItem4,
+                    leafItem5, leafItem6, leafItem7, leafItem8, leafItem9);
             rootItem.getChildren().add(branchItem);
         }
-
-
         treeReactors.setRoot(rootItem);
     }
 
-
+    public static void error() {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Error");
+        alert.setHeaderText(null);
+        alert.setContentText("Ашипка");
+        alert.showAndWait();
+    }
 }
