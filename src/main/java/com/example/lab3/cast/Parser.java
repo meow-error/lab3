@@ -6,13 +6,14 @@ import com.example.lab3.cast.pars.XmlPars;
 import com.example.lab3.cast.pars.YamlPars;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
 public class Parser {
 
     private final ArrayList<Reactor> reactorArrayList = new ArrayList<>();
 
-    public Parser(File file) {
+    public Parser(File file) throws FileNotFoundException {
         if (file.getAbsolutePath().endsWith(".json")) {
             JsonPars jsonPars = new JsonPars();
             jsonPars.parse(file, reactorArrayList);

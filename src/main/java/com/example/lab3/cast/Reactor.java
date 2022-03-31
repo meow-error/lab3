@@ -2,15 +2,18 @@ package com.example.lab3.cast;
 
 public class Reactor {
 
-    String name;
-    double burnup;
-    double kpd;
-    double enrichment;
-    double termal_capacity;
-    double electrical_capacity;
-    double life_time;
-    double first_load;
-    String source;
+    private String name;
+    private double burnup;
+    private double kpd;
+    private double enrichment;
+    private double termal_capacity;
+    private double electrical_capacity;
+    private double life_time;
+    private double first_load;
+    private String source;
+
+    public Reactor() {
+    }
 
     public Reactor(String name, double burnup, double kpd, double enrichment, double termal_capacity, double electrical_capacity, double life_time, double first_load, String source) {
         this.name = name;
@@ -21,6 +24,10 @@ public class Reactor {
         this.electrical_capacity = electrical_capacity;
         this.life_time = life_time;
         this.first_load = first_load;
+        this.source = source;
+    }
+
+    public void setSource(String source) {
         this.source = source;
     }
 

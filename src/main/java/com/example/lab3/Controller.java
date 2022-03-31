@@ -10,6 +10,7 @@ import javafx.scene.control.TreeView;
 import javafx.stage.FileChooser;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
 public class Controller {
@@ -21,7 +22,7 @@ public class Controller {
     private TreeView<String> treeReactors;
 
     @FXML
-    void importFile(ActionEvent event) {
+    void importFile(ActionEvent event) throws FileNotFoundException {
 
         FileChooser fc = new FileChooser();
         File file = fc.showOpenDialog(null);
