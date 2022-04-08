@@ -13,11 +13,16 @@ import java.util.ArrayList;
 
 public class YamlPars {
 
-    public void parse(File file, ArrayList<Reactor> reactorArrayList) throws FileNotFoundException {
+    ArrayList<Reactor> reactorArrayList = new ArrayList<>();
 
-        InputStream inputStream = new FileInputStream(file);
+    public ArrayList<Reactor> getReactorArrayList() {
+        return reactorArrayList;
+    }
+
+    public void parse(String s) throws FileNotFoundException {
+
         Yaml yaml = new Yaml(new Constructor(ReactorType.class));
-        ReactorType data = yaml.load(inputStream);
+        ReactorType data = yaml.load(s);
         reactorArrayList.addAll(data.getReactorType());
 
     }

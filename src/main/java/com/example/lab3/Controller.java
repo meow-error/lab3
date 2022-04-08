@@ -1,14 +1,17 @@
 package com.example.lab3;
 
-import com.example.lab3.cast.Parser;
 import com.example.lab3.cast.Reactor;
+import com.example.lab3.cast.pars.JsonPars;
+import com.example.lab3.cast.pars.XmlPars;
+import com.example.lab3.cast.pars.YamlPars;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
+import org.apache.commons.io.IOUtils;
 
-import java.io.File;
+import java.io.*;
 import java.util.ArrayList;
 
 public class Controller {
@@ -26,27 +29,36 @@ public class Controller {
 
     @FXML
     void importFileJSON(ActionEvent event) {
-        File file = new File(Controller.class.getResource("ReactorType.json").getFile());
-        parse(file);
+        try {
+            JsonPars jsonPars = new JsonPars();
+            jsonPars.parse(IOUtils.toString(Controller.class.getResourceAsStream("ReactorType.json")));
+            initialize(jsonPars.getReactorArrayList());
+        } catch (Exception e) {
+            e.printStackTrace();
+            error();
+        }
     }
 
     @FXML
     void importFileXML(ActionEvent event) {
-        File file = new File(Controller.class.getResource("ReactorType.xml").getFile());
-        parse(file);
+        try {
+            XmlPars xmlPars = new XmlPars();
+            xmlPars.parse(IOUtils.toString(Controller.class.getResourceAsStream("ReactorType.xml")));
+            initialize(xmlPars.getReactorArrayList());
+        } catch (Exception e) {
+            e.printStackTrace();
+            error();
+        }
     }
 
     @FXML
     void importFileYAML(ActionEvent event) {
-        File file = new File(Controller.class.getResource("ReactorType.yaml").getFile());
-        parse(file);
-    }
-
-    public void parse(File file) {
         try {
-            Parser parser = new Parser(file);
-            initialize(parser.getReactorArrayList());
+            YamlPars yamlPars = new YamlPars();
+            yamlPars.parse(IOUtils.toString(Controller.class.getResourceAsStream("ReactorType.yaml")));
+            initialize(yamlPars.getReactorArrayList());
         } catch (Exception e) {
+            e.printStackTrace();
             error();
         }
     }
@@ -79,4 +91,5 @@ public class Controller {
         }
         treeReactors.setRoot(rootItem);
     }
+
 }

@@ -5,22 +5,32 @@ import com.example.lab3.cast.Reactor;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
+import org.xml.sax.InputSource;
+import org.xml.sax.SAXException;
 
 import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
 import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.StringReader;
 import java.util.ArrayList;
 
 public class XmlPars {
 
-    public void parse(File file, ArrayList<Reactor> reactorArrayList) {
+    ArrayList<Reactor> reactorArrayList = new ArrayList<>();
+
+    public ArrayList<Reactor> getReactorArrayList() {
+        return reactorArrayList;
+    }
+
+    public void parse(String s) throws ParserConfigurationException, IOException, SAXException {
 
         DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
-        Document doc = null;
-        try {
-            doc = dbf.newDocumentBuilder().parse(file);
-        } catch (Exception e) {
-            Controller.error();
-        }
+
+
+        Document doc = dbf.newDocumentBuilder().parse(new InputSource(new StringReader(s)));
+
 
         Node rootNode = doc.getFirstChild();
 
