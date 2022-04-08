@@ -1,5 +1,6 @@
 package com.example.lab3.cast.pars;
 
+import com.example.lab3.Controller;
 import com.example.lab3.cast.Reactor;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -40,7 +41,7 @@ public class JsonPars {
             }
 
         } catch (Exception e) {
-            e.printStackTrace();
+            Controller.error();
         }
     }
 }

@@ -5,10 +5,8 @@ import com.example.lab3.cast.Reactor;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
-import javafx.stage.FileChooser;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -16,17 +14,36 @@ import java.util.ArrayList;
 public class Controller {
 
     @FXML
-    private Button importBut;
-
-    @FXML
     private TreeView<String> treeReactors;
 
-    @FXML
-    void importFile(ActionEvent event) {
+    public static void error() {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Error");
+        alert.setHeaderText(null);
+        alert.setContentText("Error");
+        alert.showAndWait();
+    }
 
+    @FXML
+    void importFileJSON(ActionEvent event) {
+        File file = new File(Controller.class.getResource("ReactorType.json").getFile());
+        parse(file);
+    }
+
+    @FXML
+    void importFileXML(ActionEvent event) {
+        File file = new File(Controller.class.getResource("ReactorType.xml").getFile());
+        parse(file);
+    }
+
+    @FXML
+    void importFileYAML(ActionEvent event) {
+        File file = new File(Controller.class.getResource("ReactorType.yaml").getFile());
+        parse(file);
+    }
+
+    public void parse(File file) {
         try {
-            FileChooser fc = new FileChooser();
-            File file = fc.showOpenDialog(null);
             Parser parser = new Parser(file);
             initialize(parser.getReactorArrayList());
         } catch (Exception e) {
@@ -61,13 +78,5 @@ public class Controller {
             }
         }
         treeReactors.setRoot(rootItem);
-    }
-
-    public static void error() {
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle("Error");
-        alert.setHeaderText(null);
-        alert.setContentText("Error");
-        alert.showAndWait();
     }
 }

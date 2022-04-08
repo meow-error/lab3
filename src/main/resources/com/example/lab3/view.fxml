@@ -6,7 +6,9 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.lab3.Controller">
    <children>
-      <Button fx:id="importBut" layoutX="25.0" layoutY="36.0" mnemonicParsing="false" onAction="#importFile" prefHeight="114.0" prefWidth="164.0" text="Import" />
+      <Button fx:id="importBut" layoutX="25.0" layoutY="36.0" mnemonicParsing="false" onAction="#importFileJSON" prefHeight="85.0" prefWidth="164.0" text="JSON" />
       <TreeView fx:id="treeReactors" layoutX="226.0" layoutY="36.0" prefHeight="340.0" prefWidth="342.0" />
+      <Button fx:id="importBut1" layoutX="25.0" layoutY="157.0" mnemonicParsing="false" onAction="#importFileXML" prefHeight="86.0" prefWidth="164.0" text="XML" />
+      <Button fx:id="importBut11" layoutX="25.0" layoutY="289.0" mnemonicParsing="false" onAction="#importFileYAML" prefHeight="86.0" prefWidth="164.0" text="YAML" />
    </children>
 </AnchorPane>

@@ -1,5 +1,6 @@
 package com.example.lab3.cast.pars;
 
+import com.example.lab3.Controller;
 import com.example.lab3.cast.Reactor;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
@@ -18,7 +19,7 @@ public class XmlPars {
         try {
             doc = dbf.newDocumentBuilder().parse(file);
         } catch (Exception e) {
-            e.printStackTrace();
+            Controller.error();
         }
 
         Node rootNode = doc.getFirstChild();
@@ -81,9 +82,9 @@ public class XmlPars {
 
             String source = "XML";
             if (name != null) {
-                Reactor reactor = new Reactor(name, burnup, kpd, enrichment, termal_capacity, electrical_capacity, life_time, first_load, source);
+                Reactor reactor = new Reactor(name, burnup, kpd, enrichment, termal_capacity,
+                                            electrical_capacity, life_time, first_load, source);
                 reactorArrayList.add(reactor);
-
             }
         }
     }
