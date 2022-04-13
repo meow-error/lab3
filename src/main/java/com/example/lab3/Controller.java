@@ -26,7 +26,7 @@ public class Controller {
     @FXML
     private TextArea area;
 
-    public static void error(String text) {
+    void error(String text) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle("Error");
         alert.setHeaderText(null);
@@ -100,8 +100,7 @@ public class Controller {
                 TreeItem<String> leafItem8 = new TreeItem<>("first_load : " + reactor.getFirst_load());
                 TreeItem<String> leafItem9 = new TreeItem<>("source : " + reactor.getSource());
 
-                branchItem.getChildren().addAll(leafItem1, leafItem2, leafItem3, leafItem4,
-                        leafItem5, leafItem6, leafItem7, leafItem8, leafItem9);
+                branchItem.getChildren().addAll(leafItem1, leafItem2, leafItem3, leafItem4, leafItem5, leafItem6, leafItem7, leafItem8, leafItem9);
                 rootItem.getChildren().add(branchItem);
             }
         }

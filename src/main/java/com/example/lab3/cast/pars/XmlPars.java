@@ -1,6 +1,5 @@
 package com.example.lab3.cast.pars;
 
-import com.example.lab3.Controller;
 import com.example.lab3.cast.Reactor;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
@@ -10,9 +9,7 @@ import org.xml.sax.SAXException;
 
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
-import java.io.File;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.StringReader;
 import java.util.ArrayList;
 
@@ -93,7 +90,7 @@ public class XmlPars {
             String source = "XML";
             if (name != null) {
                 Reactor reactor = new Reactor(name, burnup, kpd, enrichment, termal_capacity,
-                                            electrical_capacity, life_time, first_load, source);
+                        electrical_capacity, life_time, first_load, source);
                 reactorArrayList.add(reactor);
             }
         }

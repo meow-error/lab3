@@ -38,8 +38,7 @@ public class JsonPars {
             double first_load = Double.parseDouble((String) reactorJsonObject.get("first_load"));
             String source = "JSON";
 
-            Reactor reactor = new Reactor(name, burnup, kpd, enrichment, termal_capacity,
-                    electrical_capacity, life_time, first_load, source);
+            Reactor reactor = new Reactor(name, burnup, kpd, enrichment, termal_capacity, electrical_capacity, life_time, first_load, source);
 
             reactorArrayList.add(reactor);
         }

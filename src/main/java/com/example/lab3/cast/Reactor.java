@@ -12,10 +12,10 @@ public class Reactor {
     private double first_load;
     private String source;
 
-    public Reactor() {}
+    public Reactor() {
+    }
 
-    public Reactor(String name, double burnup, double kpd, double enrichment, double termal_capacity,
-                   double electrical_capacity, double life_time, double first_load, String source) {
+    public Reactor(String name, double burnup, double kpd, double enrichment, double termal_capacity, double electrical_capacity, double life_time, double first_load, String source) {
         this.name = name;
         this.burnup = burnup;
         this.kpd = kpd;
@@ -24,10 +24,6 @@ public class Reactor {
         this.electrical_capacity = electrical_capacity;
         this.life_time = life_time;
         this.first_load = first_load;
-        this.source = source;
-    }
-
-    public void setSource(String source) {
         this.source = source;
     }
 
@@ -89,6 +85,10 @@ public class Reactor {
 
     public String getSource() {
         return source;
+    }
+
+    public void setSource(String source) {
+        this.source = source;
     }
 
     public double getFirst_load() {
