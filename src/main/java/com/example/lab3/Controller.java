@@ -7,59 +7,75 @@ import com.example.lab3.cast.pars.YamlPars;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
-import org.apache.commons.io.IOUtils;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.stream.Collectors;
 
 public class Controller {
 
     @FXML
     private TreeView<String> treeReactors;
 
-    public static void error() {
+    @FXML
+    private TextArea area;
+
+    public static void error(String text) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle("Error");
         alert.setHeaderText(null);
-        alert.setContentText("Error");
+        alert.setContentText(text);
         alert.showAndWait();
     }
 
     @FXML
     void importFileJSON(ActionEvent event) {
         try {
+            InputStream is = (getClass().getResourceAsStream("ReactorType.json"));
+            String text = new BufferedReader(new InputStreamReader(is)).lines().collect(Collectors.joining("\n"));
+            area.setText(text);
             JsonPars jsonPars = new JsonPars();
-            jsonPars.parse(IOUtils.toString(Controller.class.getResourceAsStream("ReactorType.json")));
+            jsonPars.parse(text);
             initialize(jsonPars.getReactorArrayList());
         } catch (Exception e) {
-            e.printStackTrace();
-            error();
+            area.setText(e.toString());
+            error(e.toString());
         }
     }
 
     @FXML
     void importFileXML(ActionEvent event) {
         try {
+            InputStream is = (getClass().getResourceAsStream("ReactorType.xml"));
+            String text = new BufferedReader(new InputStreamReader(is)).lines().collect(Collectors.joining("\n"));
+            area.setText(text);
             XmlPars xmlPars = new XmlPars();
-            xmlPars.parse(IOUtils.toString(Controller.class.getResourceAsStream("ReactorType.xml")));
+            xmlPars.parse(text);
             initialize(xmlPars.getReactorArrayList());
         } catch (Exception e) {
-            e.printStackTrace();
-            error();
+            area.setText(e.toString());
+            error(e.toString());
         }
     }
 
     @FXML
-    void importFileYAML(ActionEvent event) {
+    void importFileYAML(ActionEvent event) throws IOException {
+        InputStream is = (getClass().getResourceAsStream("ReactorType.yaml"));
+        String text = new BufferedReader(new InputStreamReader(is)).lines().collect(Collectors.joining("\n"));
+        area.setText(text);
+        YamlPars yamlPars = new YamlPars();
+        yamlPars.parse(text);
+        initialize(yamlPars.getReactorArrayList());
         try {
-            YamlPars yamlPars = new YamlPars();
-            yamlPars.parse(IOUtils.toString(Controller.class.getResourceAsStream("ReactorType.yaml")));
-            initialize(yamlPars.getReactorArrayList());
         } catch (Exception e) {
-            e.printStackTrace();
-            error();
+            area.setText(e.toString());
+            error(e.toString());
         }
     }
 

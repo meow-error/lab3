@@ -6,10 +6,7 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
-import java.io.File;
-import java.io.FileReader;
 import java.io.IOException;
-import java.io.InputStream;
 import java.util.ArrayList;
 
 public class JsonPars {
@@ -41,7 +38,8 @@ public class JsonPars {
             double first_load = Double.parseDouble((String) reactorJsonObject.get("first_load"));
             String source = "JSON";
 
-            Reactor reactor = new Reactor(name, burnup, kpd, enrichment, termal_capacity, electrical_capacity, life_time, first_load, source);
+            Reactor reactor = new Reactor(name, burnup, kpd, enrichment, termal_capacity,
+                    electrical_capacity, life_time, first_load, source);
 
             reactorArrayList.add(reactor);
         }
