@@ -16,7 +16,7 @@ public class YamlPars {
         return reactorArrayList;
     }
 
-    public void parse(String s) throws FileNotFoundException {
+    public void parse(String s) {
 
         Yaml yaml = new Yaml(new Constructor(ReactorType.class));
         ReactorType data = yaml.load(s);

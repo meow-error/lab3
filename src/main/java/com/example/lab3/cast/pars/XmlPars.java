@@ -24,13 +24,9 @@ public class XmlPars {
     public void parse(String s) throws ParserConfigurationException, IOException, SAXException {
 
         DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
-
-
         Document doc = dbf.newDocumentBuilder().parse(new InputSource(new StringReader(s)));
 
-
         Node rootNode = doc.getFirstChild();
-
         NodeList rootChilds = rootNode.getChildNodes();
 
         for (int i = 0; i < rootChilds.getLength(); i++) {
@@ -47,10 +43,9 @@ public class XmlPars {
             double electrical_capacity = 0;
             double life_time = 0;
             double first_load = 0;
+            String source = "XML";
 
             for (int j = 0; j < reactorChilds.getLength(); j++) {
-
-                if (reactorChilds.item(j).getNodeType() != Node.ELEMENT_NODE) continue;
 
                 switch (reactorChilds.item(j).getNodeName()) {
                     case "name": {
@@ -87,10 +82,8 @@ public class XmlPars {
                 }
             }
 
-            String source = "XML";
             if (name != null) {
-                Reactor reactor = new Reactor(name, burnup, kpd, enrichment, termal_capacity,
-                        electrical_capacity, life_time, first_load, source);
+                Reactor reactor = new Reactor(name, burnup, kpd, enrichment, termal_capacity, electrical_capacity, life_time, first_load, source);
                 reactorArrayList.add(reactor);
             }
         }

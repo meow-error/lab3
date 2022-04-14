@@ -12,7 +12,6 @@ import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
 
 import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
@@ -65,14 +64,14 @@ public class Controller {
     }
 
     @FXML
-    void importFileYAML(ActionEvent event) throws IOException {
-        InputStream is = (getClass().getResourceAsStream("ReactorType.yaml"));
-        String text = new BufferedReader(new InputStreamReader(is)).lines().collect(Collectors.joining("\n"));
-        area.setText(text);
-        YamlPars yamlPars = new YamlPars();
-        yamlPars.parse(text);
-        initialize(yamlPars.getReactorArrayList());
+    void importFileYAML(ActionEvent event) {
         try {
+            InputStream is = (getClass().getResourceAsStream("ReactorType.yaml"));
+            String text = new BufferedReader(new InputStreamReader(is)).lines().collect(Collectors.joining("\n"));
+            area.setText(text);
+            YamlPars yamlPars = new YamlPars();
+            yamlPars.parse(text);
+            initialize(yamlPars.getReactorArrayList());
         } catch (Exception e) {
             area.setText(e.toString());
             error(e.toString());
@@ -81,30 +80,28 @@ public class Controller {
 
     public void initialize(ArrayList<Reactor> reactorArrayList) {
 
-        TreeItem<String> rootItem = new TreeItem<>("Error");
-        if (reactorArrayList.size() != 0) {
+        TreeItem<String> rootItem = new TreeItem<>("Reactors");
 
-            rootItem = new TreeItem<>("Reactors");
+        for (Reactor reactor : reactorArrayList) {
 
-            for (Reactor reactor : reactorArrayList) {
+            TreeItem<String> branchItem = new TreeItem<>(reactor.getName());
 
-                TreeItem<String> branchItem = new TreeItem<>(reactor.getName());
+            TreeItem<String> leafItem1 = new TreeItem<>("name : " + reactor.getName());
+            TreeItem<String> leafItem2 = new TreeItem<>("burnup : " + reactor.getBurnup());
+            TreeItem<String> leafItem3 = new TreeItem<>("kpd : " + reactor.getKpd());
+            TreeItem<String> leafItem4 = new TreeItem<>("enrichment : " + reactor.getEnrichment());
+            TreeItem<String> leafItem5 = new TreeItem<>("termal_capacity : " + reactor.getTermal_capacity());
+            TreeItem<String> leafItem6 = new TreeItem<>("electrical_capacity : " + reactor.getElectrical_capacity());
+            TreeItem<String> leafItem7 = new TreeItem<>("life_time : " + reactor.getLife_time());
+            TreeItem<String> leafItem8 = new TreeItem<>("first_load : " + reactor.getFirst_load());
+            TreeItem<String> leafItem9 = new TreeItem<>("source : " + reactor.getSource());
 
-                TreeItem<String> leafItem1 = new TreeItem<>("name : " + reactor.getName());
-                TreeItem<String> leafItem2 = new TreeItem<>("burnup : " + reactor.getBurnup());
-                TreeItem<String> leafItem3 = new TreeItem<>("kpd : " + reactor.getKpd());
-                TreeItem<String> leafItem4 = new TreeItem<>("enrichment : " + reactor.getEnrichment());
-                TreeItem<String> leafItem5 = new TreeItem<>("termal_capacity : " + reactor.getTermal_capacity());
-                TreeItem<String> leafItem6 = new TreeItem<>("electrical_capacity : " + reactor.getElectrical_capacity());
-                TreeItem<String> leafItem7 = new TreeItem<>("life_time : " + reactor.getLife_time());
-                TreeItem<String> leafItem8 = new TreeItem<>("first_load : " + reactor.getFirst_load());
-                TreeItem<String> leafItem9 = new TreeItem<>("source : " + reactor.getSource());
-
-                branchItem.getChildren().addAll(leafItem1, leafItem2, leafItem3, leafItem4, leafItem5, leafItem6, leafItem7, leafItem8, leafItem9);
-                rootItem.getChildren().add(branchItem);
-            }
+            branchItem.getChildren().addAll(leafItem1, leafItem2, leafItem3, leafItem4, leafItem5, leafItem6, leafItem7, leafItem8, leafItem9);
+            rootItem.getChildren().add(branchItem);
         }
+
         treeReactors.setRoot(rootItem);
+        treeReactors.setShowRoot(false);
     }
 
 }
